@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 //LoadDatabase - Load hits db
@@ -13,7 +13,7 @@ func LoadDatabase() *sql.DB {
 	dbPath := "./database"
 	_ = os.Mkdir(dbPath, 0700)
 
-	db, err := sql.Open("sqlite3", dbPath+"/hits.db")
+	db, err := sql.Open("sqlite", dbPath+"/hits.db")
 	if err != nil {
 		log.Fatal(err)
 	}
