@@ -9,8 +9,8 @@ import (
 )
 
 //LoadDatabase - Load hits db
-func LoadDatabase() *sql.DB {
-	dbPath := "./database"
+func LoadDatabase(rootDir string) *sql.DB {
+	dbPath := rootDir + "/database"
 	_ = os.Mkdir(dbPath, 0700)
 
 	db, err := sql.Open("sqlite3", dbPath+"/hits.db")

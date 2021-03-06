@@ -11,13 +11,13 @@ import (
 const ppPort = "3000"
 
 func main() {
-	db := LoadDatabase()
-	app := fiber.New()
-
 	var rootDir string = "."
 	if len(os.Args) >= 2 {
 		rootDir = os.Args[1]
 	}
+
+	db := LoadDatabase(rootDir)
+	app := fiber.New()
 
 	app.Get("/ack", func(c *fiber.Ctx) error {
 		saveHit(c.Request(), db)
